@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-app-deployment
+# Config of deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      # Key value pairs of the pods controlled by this deployment
+      app: first-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: first-app
+        tier: backend
+    # Config of pod
+    spec:
+      containers:
+        - name: first-app
+          image: michaelyvr/kub-first-app:latest
